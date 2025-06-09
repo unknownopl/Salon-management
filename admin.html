@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <title>বুকিং তালিকা</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>সকল বুকিং তালিকা</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>নাম</th>
+          <th>ফোন</th>
+          <th>সেবা</th>
+          <th>তারিখ</th>
+          <th>সময়</th>
+        </tr>
+      </thead>
+      <tbody id="bookingList"></tbody>
+    </table>
+    <br>
+    <a href="index.html" class="admin-link">⬅️ আবার বুকিং করুন</a>
+  </div>
+
+  <script>
+    const bookings = JSON.parse(localStorage.getItem("bookings")) || [];
+    const list = document.getElementById("bookingList");
+
+    bookings.forEach(b => {
+      const row = document.createElement("tr");
+      row.innerHTML = `<td>${b.name}</td><td>${b.phone}</td><td>${b.service}</td><td>${b.date}</td><td>${b.time}</td>`;
+      list.appendChild(row);
+    });
+  </script>
+</body>
+</html>
